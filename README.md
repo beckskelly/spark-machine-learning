@@ -14,6 +14,8 @@ Sales price vs Log of Sale Price
 ![image](https://user-images.githubusercontent.com/78801723/169141957-482188b5-f4c1-4eae-b090-256e88843683.png)
 
 Correlation Matrix
+
+
 ![image](https://user-images.githubusercontent.com/78801723/169142062-32fe2681-be2e-4b00-8836-0ac6ad9fdd2b.png)
 
 Description of top 9 correlated values
