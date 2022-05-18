@@ -1,34 +1,44 @@
 # Pyspark Machine Learning House Price Prediction
 
-This was a project to solve a machine learning problem using pyspark. 
-
 ## Kaggle Competition selected
-This is a competition to predict house prices using advanced regression techniques. It is aimed at beginner data science students who have experience with
-some R or Python and machine learning basics. I picked this project for this reason, as a software development student, I do not have a lot of experience with
-machine learning and had to do a lot of background reading for this assignment. The goal is the predict the sales price for each house in the test set. Here is the
-link for the project: https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/overview
+This is a competition to predict house prices using advanced regression techniques. It is aimed at beginner data science students who have experience with some R or Python and machine learning basics. The goal is the predict the sales price for each house in the test set. Here is the link for the project: https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/overview
 
-Problem definition
-Task (T): Predict the sales price for each house Id in the test set
-Experience (E): The Ames Housing dataset compiled by Dean De Cock. This is a dataset with 79 explanatory variables describing every aspect of residential
-homes in Ames in Iowa.
-Performance (P): Prediction accuracy, the closer the prediction to the actual sale price of the house sold. These are evaluated on the Root-Mean-Squared-Error
-(RSME) between the logarithm of the observed sales price and the predicted value. The log is used to stop the skew between cheaper and more expensive
-houses.
-Assumptions
-- The size of the house and location will matter to the model
-- As Overall Quality of the house increases, the Sale Price also increases
-- As ground living area increases, the sale price will increase
-- As the building ages, it will decrease in value
-Why solve this problem?
-A house is typically the largest purchase that will be made in an individuals lifetime. It’s worth being well informed about what a house’s selling price would be,
-be it for the individual or a broker/ mortgage provider.
-How will I solve this problem?
-Firstly, I need to figure out what type of house is being sold generally? Are there any trends that can be seen? The next step is to decide what columns to drop,
-fill in null values, create a pipeline, vector assembler and start fitting the data to models. The models will then be assessed.
-Data Exploration, Feature Engineering and Data Preparation
-Data Exploration
-Firstly I loaded in the dataset. I used spark.read.csv() to read in the data, with the settings that imported it as a Spark DataFrame, taking the first row as a
-header, inferring the schema and specifying null values as “NA”. There is not a lot of information to be retrieved from this, so I started off with some basic
-exploration. I checked the shape of the dataset which was (1460, 81) and printed the schema to check the inferred schema and took note of what was incorrect.
-I then viewed some general information about the data, such as count, mean, min and max using df.describe(). As you can see below, immediately with the 
+## Data exploration
+
+Sales price vs Log of Sale Price
+![image](https://user-images.githubusercontent.com/78801723/169141940-de6bf62c-e996-42e8-976f-a4dabaee3b2b.png)
+![image](https://user-images.githubusercontent.com/78801723/169141957-482188b5-f4c1-4eae-b090-256e88843683.png)
+
+Correlation Matrix
+![image](https://user-images.githubusercontent.com/78801723/169142062-32fe2681-be2e-4b00-8836-0ac6ad9fdd2b.png)
+
+Description of top 9 correlated values
+- OverallQual: Rates the overall material and finish of the house (1 = Very Poor, 10 = Very Excellent)
+- GrLivArea: Above grade (ground) living area square feet
+- GarageCars: Size of garage in car capacity
+- GarageArea: Size of garage in square feet
+- TotalBsmtSF: Total square feet of the basement area
+- 1stFlrSF: First Floor square feet
+- FullBath: Full bathrooms above grade
+- TotRmsAbvGrd: Total rooms above grade (does not include bathrooms)
+- YearBuilt: Original construction date
+
+![image](https://user-images.githubusercontent.com/78801723/169142251-08d4e947-4313-4bee-a1e3-f4d76cb7a334.png)
+![image](https://user-images.githubusercontent.com/78801723/169142261-3483c2e6-9e0b-4c59-baba-9d0e5247f513.png)
+![image](https://user-images.githubusercontent.com/78801723/169142278-ccf3bcf8-8186-4984-a447-7f433f08fa2c.png)
+![image](https://user-images.githubusercontent.com/78801723/169142286-3fd31889-109d-45e0-926a-e3b411cd864d.png)
+![image](https://user-images.githubusercontent.com/78801723/169142320-5f50cd55-4fc9-4261-b622-d9db512cba3d.png)
+![image](https://user-images.githubusercontent.com/78801723/169142336-ca85b2f6-7cec-488e-9435-77682eb561c6.png)
+![image](https://user-images.githubusercontent.com/78801723/169142357-ecb19014-20f5-45f0-b2f5-869af9c02520.png)
+
+### Models and results
+
+1. LinearRegression
+![image](https://user-images.githubusercontent.com/78801723/169142502-6581cc28-6e02-4fec-a2c7-8a478d9564b3.png)
+
+2. RandomForestRegressor
+![image](https://user-images.githubusercontent.com/78801723/169142583-9f8f6987-5b95-4f56-a67c-d78ce962fd98.png)
+
+3. DecisionTreeRegressor
+![image](https://user-images.githubusercontent.com/78801723/169142624-a3baebc1-9d0c-4cd7-9c5a-a70b19cefc26.png)
+
