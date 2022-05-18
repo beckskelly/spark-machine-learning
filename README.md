@@ -6,7 +6,11 @@ This is a competition to predict house prices using advanced regression techniqu
 ## Data exploration
 
 Sales price vs Log of Sale Price
+
+
 ![image](https://user-images.githubusercontent.com/78801723/169141940-de6bf62c-e996-42e8-976f-a4dabaee3b2b.png)
+
+
 ![image](https://user-images.githubusercontent.com/78801723/169141957-482188b5-f4c1-4eae-b090-256e88843683.png)
 
 Correlation Matrix
